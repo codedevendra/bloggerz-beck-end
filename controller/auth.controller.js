@@ -14,13 +14,13 @@ exports.bloggerLogin = async (req, res, next) => {
   const body = req.body;
 
   if (!body.email || !body.password) {
-    res.status(401).json({ error: "Please provide email and password !" });
+    res.status(401).json({ message: "Please provide email and password !" });
   }
 
   user = await Blogger.findOne({ email: body.email });
-
+  
   if (!user) {
-    res.status(401).json({ error: "Invalid credentials !" });
+    res.status(401).json({ message: "Invalid credentials !" });
     return;
   }
 
@@ -29,6 +29,6 @@ exports.bloggerLogin = async (req, res, next) => {
   if (isMatch) {
     res.status(200).json({ token: user.getUserData(), user });
   } else {
-    res.status(401).json({ error: "Invalid credentials !" });
+    res.status(401).json({ message: "Invalid credentials !" });
   }
 };

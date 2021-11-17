@@ -11,7 +11,7 @@ exports.addCategory = async (req, res, next) => {
 };
 
 exports.addPhotos = async (req, res, next) => {
-  let body = { url: "images/" + req.files["blog-image"][0].filename };
+  let body = { url: "images/" + req.files["blogImage"][0].filename };
   await ImageSchema.create(body, (error, doc) => {
     if (doc) {
       res.status(201).json({ message: "file uploaded successfully !" });

@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
   },
 });
 var upload = multer({ storage: storage });
-var cpUpload = upload.fields([{ name: "blog-image", maxCount: 1 }]);
+var cpUpload = upload.fields([{ name: "blogImage", maxCount: 1 }]);
 router.post("/category", protectUser, blogger.addCategory);
 router.post("/image", protectUser, cpUpload, blogger.addPhotos);
 module.exports = router;
