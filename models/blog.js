@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const blogSchema = new mongoose.Schema({
   title: {
@@ -32,22 +33,21 @@ const blogSchema = new mongoose.Schema({
   },
   sendPostToAllRegistered: {
     type: Boolean,
-    required: true,
+    default:true
   },
   sendPostToAllSubscriber: {
     type: Boolean,
-    required: true,
+    default:true
   },
   tags: {
     type: Array,
     required: true,
   },
-  category: {
-    type: String,
-    required: true,
-  },
+  category:{ type: Schema.Types.ObjectId, ref: 'category' },
   mainImage: {
     type: String,
     required: true,
   },
 });
+
+module.exports =mongoose.model("blog",blogSchema);

@@ -1,5 +1,6 @@
 const Blogger = require("../models/category");
 const ImageSchema = require("../models/image");
+const blogSchema=require("../models/blog");
 
 exports.addCategory = async (req, res, next) => {
   await Blogger.create(req.body, (error, doc) => {
@@ -20,3 +21,18 @@ exports.addPhotos = async (req, res, next) => {
     }
   });
 };
+
+exports.addBlog=async (req,res,next)=>{
+  console.log(req.body)
+  blogSchema.create(req.body,(error,doc)=>{
+    if(doc)
+    {
+      res.status(201).json({message:"blog added successfully !"})
+    }
+    else{
+      res.status(403).json({message:error})
+    }
+  })
+}
+
+
