@@ -33,21 +33,34 @@ const blogSchema = new mongoose.Schema({
   },
   sendPostToAllRegistered: {
     type: Boolean,
-    default:true
+    default: true,
   },
   sendPostToAllSubscriber: {
     type: Boolean,
-    default:true
+    default: true,
   },
   tags: {
     type: Array,
     required: true,
   },
-  category:{ type: Schema.Types.ObjectId, ref: 'category' },
+  category: { type: Schema.Types.ObjectId, ref: "category" },
   mainImage: {
     type: String,
     required: true,
   },
+  mainImageDescription: {
+    type: String,
+    required: true,
+  },
+  visibility: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  blog: {
+    required: true,
+    type: String,
+  },
 });
 
-module.exports =mongoose.model("blog",blogSchema);
+module.exports = mongoose.model("blog", blogSchema);
